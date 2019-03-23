@@ -326,9 +326,10 @@ class Assignment < ActiveRecord::Base
     next_due_date.round ||= 0
   end
 
+
   # For varying rubric feature
-  def current_stage_name(topic_id = nil)
-    if self.staggered_deadline?
+ def current_stage_name(topic_id = nil)
+   if self.staggered_deadline?
       return (topic_id.nil? ? 'Unknown' : get_current_stage(topic_id))
     end
     due_date = find_current_stage(topic_id)
